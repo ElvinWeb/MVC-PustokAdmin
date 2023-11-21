@@ -1,0 +1,20 @@
+﻿@using MVC.PracticeTask_1.Models;
+@model Service;
+<form method="post">
+    <div class="container col-12 my-5">
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-header">
+                <h3 style="font-weight:600">
+                    Delete a Service
+                </h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@Model.Title</li>
+                <li class="list-group-item">@Model.Description</li>
+                <li class="list-group-item">@Model.Icon</li>
+            </ul>
+        </div>
+        <a class="btn btn-success" asp-action="Index" asp-controller="Service">Back To Home</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+</form>

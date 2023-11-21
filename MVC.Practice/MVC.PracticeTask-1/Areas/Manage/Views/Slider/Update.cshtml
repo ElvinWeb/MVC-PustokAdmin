@@ -1,0 +1,37 @@
+﻿@using MVC.PracticeTask_1.Models;
+@model Slide;
+<div class="container shadow " style="max-width:700px;padding:50px;margin-top:150px;">
+    <div>
+        <h1>Update a Slide</h1>
+    </div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Title</label>
+            <input asp-for="Title" type="text" class="form-control">
+            <span asp-validation-for="Title" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Description</label>
+            <input asp-for="Description" type="text" class="form-control">
+            <span asp-validation-for="Description" style="color:red"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Icon</label>
+            <input asp-for="ImgUrl" type="text" class="form-control">
+            <span asp-validation-for="ImgUrl" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Icon</label>
+            <input asp-for="RedirectUrl" type="text" class="form-control">
+            <span asp-validation-for="RedirectUrl" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Icon</label>
+            <input asp-for="BtnText" type="text" class="form-control">
+            <span asp-validation-for="BtnText" style="color:red"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-25">Update</button>
+    </form>
+</div>

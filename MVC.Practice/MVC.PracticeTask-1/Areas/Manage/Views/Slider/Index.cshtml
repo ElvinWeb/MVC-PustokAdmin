@@ -1,0 +1,44 @@
+﻿@using MVC.PracticeTask_1.Models;
+@model List<Slide>;
+@{
+    int counter = 0;
+}
+<div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>Slides Datas</h1>
+        <a class="btn btn-primary" style="width:100px;" asp-action="Create" asp-controller="Slider">Add</a>
+    </div>
+
+    <table class="table table-dark table-striped mt-3 shadow">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Img</th>
+                <th scope="col">BtnContent</th>
+                <th scope="col">Redirect-URL</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var slide in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@slide.Title</td>
+                    <td>@slide.Description</td>
+                    <td>@slide.ImgUrl</td>
+                    <td>@slide.BtnText</td>
+                    <td>@slide.RedirectUrl</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="Slider" asp-route-id="@slide.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Slider" asp-route-id="@slide.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
