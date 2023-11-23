@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "urkt4wV0PMJ7sdsdMBl+VliyzJ/8yaEMOYxPeLgrRy0=",
+  "Hash": "w1GsVW6LSxyD8wiMmrfrbcWKrgdY321mznnBQF7E/Dw=",
   "Source": "MVC.PracticeTask-1",
   "BasePath": "_content/MVC.PracticeTask-1",
   "Mode": "Default",
@@ -33318,6 +33318,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\bg-slide\\34b3ce53-4de1-4a80-8883-34009c5da671Successful-Blogging-Space-Topics-.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\43ffbf25-a9ed-47ea-8d0a-9721adbd0157feature-work-2-large.jpg",
+      "SourceId": "MVC.PracticeTask-1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\",
+      "BasePath": "_content/MVC.PracticeTask-1",
+      "RelativePath": "uploads/bg-slide/43ffbf25-a9ed-47ea-8d0a-9721adbd0157feature-work-2-large.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\bg-slide\\43ffbf25-a9ed-47ea-8d0a-9721adbd0157feature-work-2-large.jpg"
     },
     {
       "Identity": "C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\51fa41f8-dc41-4172-b65e-40c2f118aedb3840x2160.jpg",
