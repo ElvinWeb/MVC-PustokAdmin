@@ -1,10 +1,10 @@
 ﻿@using MVC.PracticeTask_1.Models;
 @model Slide;
-<div class="container shadow " style="max-width:700px;padding:50px;margin-top:150px;">
+<div class="container shadow " style="max-width:700px;padding:50px;margin-bottom:50px;">
     <div>
         <h1>Create a Slide</h1>
     </div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="" class="form-label">Title</label>
             <input asp-for="Title" type="text" class="form-control">
@@ -17,11 +17,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">ImgUrl</label>
-            <input asp-for="ImgUrl" type="text" class="form-control">
-            <span asp-validation-for="ImgUrl" style="color:red"></span>
-        </div>
-        <div class="mb-3">
             <label for="" class="form-label">Redirect-Url</label>
             <input asp-for="RedirectUrl" type="text" class="form-control">
             <span asp-validation-for="RedirectUrl" style="color:red"></span>
@@ -30,6 +25,12 @@
             <label for="" class="form-label">Btn-content</label>
             <input asp-for="BtnText" type="text" class="form-control">
             <span asp-validation-for="BtnText" style="color:red"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Image</label>
+            <input asp-for="Image" type="file" class="form-control">
+            
         </div>
 
         <button type="submit" class="btn btn-primary w-25">Submit</button>

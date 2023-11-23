@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC.PracticeTask_1.Models
 {
@@ -6,18 +7,22 @@ namespace MVC.PracticeTask_1.Models
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(maximumLength:50)]
+        [StringLength(maximumLength: 50)]
         public string Title { get; set; }
         [Required]
         [StringLength(maximumLength: 100)]
         public string Description { get; set; }
         [Required]
-        public string ImgUrl { get; set; }
-        [Required]
         [StringLength(maximumLength: 30)]
         public string BtnText { get; set; }
         [Required]
-        [StringLength(maximumLength: 30)]
+        [StringLength(maximumLength: 100)]
         public string RedirectUrl { get; set; }
+        [Required]
+        [StringLength(maximumLength: 100)]
+        public string? ImgUrl { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
+
     }
 }
