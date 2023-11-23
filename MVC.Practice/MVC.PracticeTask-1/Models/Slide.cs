@@ -17,11 +17,12 @@ namespace MVC.PracticeTask_1.Models
         public string BtnText { get; set; }
         [Required]
         [StringLength(maximumLength: 100)]
-        public string RedirectUrl { get; set; }       
+        public string RedirectUrl { get; set; }   
+        
         [StringLength(maximumLength: 100)]
         public string? ImgUrl { get; set; }
         [NotMapped]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
 
     }
 }

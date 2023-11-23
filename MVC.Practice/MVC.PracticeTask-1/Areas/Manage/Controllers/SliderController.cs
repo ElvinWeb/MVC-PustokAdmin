@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
 using MVC.PracticeTask_1.DataAccessLayer;
 using MVC.PracticeTask_1.Models;
+using MVC.PracticeTask_1.Helpers;
+using System.Globalization;
 
 namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 {
@@ -10,9 +12,11 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
     public class SliderController : Controller
     {
         private readonly AppDbContext _DbContext;
-        public SliderController(AppDbContext _context)
+        private readonly IWebHostEnvironment _env;
+        public SliderController(AppDbContext _context, IWebHostEnvironment env)
         {
             _DbContext = _context;
+            _env = env;
         }
         public IActionResult Index()
         {
@@ -29,39 +33,41 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Slide slide)
         {
-            string fileName = slide.Image.FileName;
+            string fileName = string.Empty;
 
-            if (slide.Image.ContentType != "image/png" && slide.Image.ContentType != "image/jpeg")
-            {
-                ModelState.AddModelError("Image", "please select correct file type");
-            }
-
-            if (slide.Image.Length > 1048576)
-            {
-                ModelState.AddModelError("Image", "file size should be more lower than 1mb ");
-            }
-
-            if (fileName.Length > 64)
-            {
-                fileName = fileName.Substring(fileName.Length - 64, 64);
-            }
             if (!ModelState.IsValid) return View(slide);
-
-            fileName = Guid.NewGuid().ToString() + fileName;
-
-
-            string path = $"C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
-
-            using (FileStream fileStream = new FileStream(path, FileMode.Create))
+            if (slide.Image != null)
             {
-                slide.Image.CopyTo(fileStream);
+                fileName = slide.Image.FileName;
+
+                if (slide.Image.ContentType != "image/png" && slide.Image.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("Image", "please select correct file type");
+                }
+
+                if (slide.Image.Length > 1048576)
+                {
+                    ModelState.AddModelError("Image", "file size should be more lower than 1mb ");
+                }
+
+                if (fileName.Length > 64)
+                {
+                    fileName = fileName.Substring(fileName.Length - 64, 64);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Image", "Must be choosed!!");
+                return View();
             }
 
-            slide.ImgUrl = fileName;
+            string folder = "uploads/bg-slide";
+            string newFileName = Helper.GetFileName(_env.WebRootPath, folder, slide.Image);
+
+            slide.ImgUrl = newFileName;
 
             _DbContext.Slides.Add(slide);
             _DbContext.SaveChanges();
-
 
             return RedirectToAction("Index");
         }
@@ -69,32 +75,66 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            Slide slide = _DbContext.Slides.FirstOrDefault(x => x.Id == id);
+            Slide slide = _DbContext.Slides.FirstOrDefault(s => s.Id == id);
+            if (slide == null) return NotFound();
             return View(slide);
         }
 
         [HttpPost]
         public IActionResult Update(Slide slide)
         {
-            //if (!ModelState.IsValid) return View();
 
-            Slide existSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
+            Slide wantedSlide = _DbContext.Slides.FirstOrDefault(s => s.Id == slide.Id);
 
+            if (wantedSlide == null) return NotFound();
 
+            if (!ModelState.IsValid) return View();
 
-            existSlide.Title = slide.Title;
-            existSlide.Description = slide.Description;
-            existSlide.ImgUrl = slide.Image.FileName;
-            existSlide.RedirectUrl = slide.RedirectUrl;
-            existSlide.BtnText = slide.BtnText;
-            existSlide.Image = slide.Image;
+            string fileName = string.Empty;
+
+            if (slide.Image != null)
+            {
+                fileName = slide.Image.FileName;
+
+                if (slide.Image.ContentType != "image/png" && slide.Image.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("Image", "please select correct file type");
+                    return View(slide);
+                }
+
+                if (slide.Image.Length > 1048576)
+                {
+                    ModelState.AddModelError("Image", "file size should be more lower than 1mb ");
+                    return View(slide);
+                }
+
+                if (fileName.Length > 64)
+                {
+                    fileName = fileName.Substring(fileName.Length - 64, 64);
+                }
+                string folderPath = "uploads/bg-slide";
+                string expiredFileName = Helper.GetFileName(_env.WebRootPath, folderPath, slide.Image);
+
+                string wantedPath = Path.Combine(_env.WebRootPath, folderPath, wantedSlide.ImgUrl);
+
+                if (System.IO.File.Exists(wantedPath))
+                {
+                    System.IO.File.Delete(wantedPath);
+                }
+
+                wantedSlide.ImgUrl = expiredFileName;
+            }
+
+            wantedSlide.Title = slide.Title;
+            wantedSlide.Description = slide.Description;
+            wantedSlide.BtnText = slide.BtnText;
+            wantedSlide.RedirectUrl = slide.RedirectUrl;
+
 
 
             _DbContext.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -106,12 +146,11 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         public IActionResult Delete(Slide slide)
         {
 
-            Slide existSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
+            Slide wantedSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
+            string folderPath = "uploads/bg-slide";
+            string path = Path.Combine(_env.WebRootPath, folderPath, wantedSlide.ImgUrl);
 
-            string fileName = existSlide.ImgUrl;
-            string path = $"C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
-
-            if (existSlide.ImgUrl != null)
+            if (wantedSlide.Image != null)
             {
                 if (System.IO.File.Exists(path))
                 {
@@ -119,7 +158,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 }
             }
 
-            _DbContext.Slides.Remove(existSlide);
+            _DbContext.Slides.Remove(wantedSlide);
             _DbContext.SaveChanges();
 
             return RedirectToAction("Index");

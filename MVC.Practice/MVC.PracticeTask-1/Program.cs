@@ -3,7 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using MVC.PracticeTask_1.DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
-string _stringConnection = "Server=DESKTOP-KA8SSD4;Database=PustokAdminDB;Trusted_Connection=True";
+string _stringConnection = "Server=ELVIN_SARKAROV\\SQLEXPRESS;Database=PustokDB;Trusted_Connection=True";
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
