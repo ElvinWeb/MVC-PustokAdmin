@@ -45,10 +45,12 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             {
                 fileName = fileName.Substring(fileName.Length - 64, 64);
             }
+            if (!ModelState.IsValid) return View(slide);
 
             fileName = Guid.NewGuid().ToString() + fileName;
 
-            string path = $"C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
+
+            string path = $"C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
 
             using (FileStream fileStream = new FileStream(path, FileMode.Create))
             {
@@ -56,9 +58,6 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             }
 
             slide.ImgUrl = fileName;
-
-            //if (!ModelState.IsValid) return View();
-
 
             _DbContext.Slides.Add(slide);
             _DbContext.SaveChanges();
@@ -110,7 +109,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             Slide existSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
 
             string fileName = existSlide.ImgUrl;
-            string path = $"C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
+            string path = $"C:\\Users\\II novbe\\Desktop\\all task\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\{fileName}";
 
             if (existSlide.ImgUrl != null)
             {
