@@ -31328,12 +31328,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\bg-slide\28747a7d-90da-46af-90f7-087ee00576a9blog-2.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\bg-slide\c7394faa-cb0f-4f1e-a860-45c20af95be3blog-3.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\bg-slide\ceffb82d-d9f3-432d-adfa-e2921d84fb56author-1.png))">
       <SourceType>Package</SourceType>
       <SourceId>MVC.PracticeTask-1</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/MVC.PracticeTask-1</BasePath>
-      <RelativePath>uploads/bg-slide/c7394faa-cb0f-4f1e-a860-45c20af95be3blog-3.jpg</RelativePath>
+      <RelativePath>uploads/bg-slide/ceffb82d-d9f3-432d-adfa-e2921d84fb56author-1.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31342,7 +31342,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\bg-slide\c7394faa-cb0f-4f1e-a860-45c20af95be3blog-3.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\bg-slide\ceffb82d-d9f3-432d-adfa-e2921d84fb56author-1.png))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

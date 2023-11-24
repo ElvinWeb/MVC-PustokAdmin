@@ -30,9 +30,10 @@
         <div class="mb-3">
             <label for="" class="form-label">Image</label>
             <input asp-for="Image" type="file" class="form-control">
-            
+            <span asp-validation-for="Image" style="color:red"></span>
         </div>
 
         <button type="submit" class="btn btn-primary w-25">Submit</button>
+        <a class="btn btn-success w-25" asp-action="Index" asp-controller="Slider">Back To Home</a>
     </form>
 </div>

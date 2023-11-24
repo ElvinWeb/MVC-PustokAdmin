@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "orcp+4PBymvw3DVbVgZypNRIuCKaLfcLQlDwGT473BRhnA6klPyhgxKSrTH9oAW219wMxZwA0LHNg27YbBFMCQ==",
+  "dgSpecHash": "QuAOUtKA2ewls4AUvF0m5gHqWyzJS0ovBwgrSO/mFDDJJY4f/1TPYgO6jcMLA4dTdRcC2Qv9E0sYiQbNmvTF5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elvin\\OneDrive\\Sənədlər\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\MVC.PracticeTask-1.csproj",
+  "projectFilePath": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\MVC.PracticeTask-1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elvin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\elvin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
