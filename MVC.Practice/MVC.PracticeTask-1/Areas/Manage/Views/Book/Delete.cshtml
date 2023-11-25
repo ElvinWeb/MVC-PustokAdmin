@@ -1,0 +1,28 @@
+﻿@model Book;
+@{
+    string currency = "azn";
+    string percentage = "%";
+}
+<form method="post">
+    <div class="container col-12 my-5">
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-header">
+                <h3 style="font-weight:600">
+                    Delete a Book
+                </h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@Model.Name</li>
+                <li class="list-group-item">@Model.Desc</li>
+                <li class="list-group-item">@Model.Code</li>
+                <li class="list-group-item">@Model.CostPrice @currency</li>
+                <li class="list-group-item">@Model.SalePrice @currency</li>
+                <li class="list-group-item">@Model.Tax @currency</li>
+                <li class="list-group-item">@Model.DiscountPercent @percentage</li>
+
+            </ul>
+        </div>
+        <a class="btn btn-success" asp-action="Index" asp-controller="Book">Back To Home</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+</form>

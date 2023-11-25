@@ -1,0 +1,82 @@
+﻿@model Book;
+<div class="container shadow " style="max-width:700px;padding:50px;margin-bottom:50px;">
+    <div class="mb-3">
+        <h1>Update a Book</h1>
+    </div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Description</label>
+            <input asp-for="Desc" type="text" class="form-control">
+            <span asp-validation-for="Desc" style="color:red"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Code</label>
+            <input asp-for="Code" type="text" class="form-control">
+            <span asp-validation-for="Code" style="color:red"></span>
+        </div>
+        <div class="row col-12" style="padding: 0px;">
+
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">CostPrice</label>
+                <input asp-for="CostPrice" type="number" class="form-control">
+                <span asp-validation-for="CostPrice" style="color:red"></span>
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">SalePrice</label>
+                <input asp-for="SalePrice" type="number" class="form-control">
+                <span asp-validation-for="SalePrice" style="color:red"></span>
+            </div>
+
+        </div>
+        <div class="row col-12" style="padding:0px;">
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Tax</label>
+                <input asp-for="Tax" type="number" class="form-control">
+                <span asp-validation-for="Tax" style="color:red"></span>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Discount</label>
+                <input asp-for="DiscountPercent" type="number" class="form-control">
+                <span asp-validation-for="DiscountPercent" style="color:red"></span>
+            </div>
+        </div>
+        <div class="row col-12" style="padding:0px;">
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <label asp-for="GenreId">Genres</label>
+                <select asp-for="GenreId" class="form-select" aria-label="Default select example" style="margin-left:10px">
+                    @foreach (var genre in ViewBag.Genres)
+                    {
+                        <option value="@genre.Id">@genre.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="GenreId" style="color:red"></span>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <label asp-for="AuthorId">Authors</label>
+                <select asp-for="AuthorId" class="form-select" aria-label="Default select example" style="margin-left:10px">
+                    @foreach (var author in ViewBag.Authors)
+                    {
+                        <option value="@author.Id">@author.FullName</option>
+                    }
+                </select>
+                <span asp-validation-for="AuthorId" style="color:red"></span>
+            </div>
+        </div>
+
+
+        <div class="form-check form-switch my-3" style="padding-left:40px;">
+            <input class="form-check-input" type="checkbox" id="" asp-for="IsAvailable">
+            <label class="form-check-label" for="">Availability</label>
+            <span asp-validation-for="IsAvailable" style="color:red"></span>
+        </div>
+        <button type="submit" class="btn btn-primary w-25">Update</button>
+        <a class="btn btn-success w-25" asp-action="Index" asp-controller="Book">Back To Home</a>
+    </form>
+</div>

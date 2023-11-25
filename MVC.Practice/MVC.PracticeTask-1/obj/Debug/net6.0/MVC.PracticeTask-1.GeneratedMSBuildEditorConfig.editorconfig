@@ -16,6 +16,58 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\elvin\OneDrive\Documents\Sənədlər\ForFuture-tasks\MVC-PustokAdmin\MVC.Practice\MVC.PracticeTask-1
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Author/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEF1dGhvclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Author/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEF1dGhvclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Author/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEF1dGhvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Author/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEF1dGhvclxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Book/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJvb2tcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Book/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJvb2tcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Book/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJvb2tcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Book/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJvb2tcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Book/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJvb2tcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Genre/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEdlbnJlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Genre/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEdlbnJlXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEdlbnJlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Genre/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEdlbnJlXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elvin/OneDrive/Documents/Sənədlər/ForFuture-tasks/MVC-PustokAdmin/MVC.Practice/MVC.PracticeTask-1/Areas/Manage/Views/Service/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNlcnZpY2VcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

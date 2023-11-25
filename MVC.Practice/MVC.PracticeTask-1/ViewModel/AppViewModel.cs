@@ -6,5 +6,8 @@ namespace MVC.PracticeTask_1.ViewModel
     {
         public List<Slide> Slides { get; set; }
         public List<Service> Services { get; set; }
+        public List<Book> Books { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<Author> Authors { get; set; }
     }
 }

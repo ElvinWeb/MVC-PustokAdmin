@@ -1,0 +1,51 @@
+﻿@model List<Book>;
+@{
+    int counter = 0;
+    string currency = "azn";
+    string percentage = "%";
+}
+<div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>Books Datas</h1>
+        <a class="btn btn-primary" style="width:100px;" asp-action="Create" asp-controller="Book">Add</a>
+    </div>
+
+    <table class="table table-hover table-striped mt-3 shadow">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Code</th>
+                <th scope="col">Tax</th>
+                <th scope="col">CostPrice</th>
+                <th scope="col">SalePrice</th>
+                <th scope="col">DiscountPercentage</th>
+                <th scope="col">Availablity</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@book.Name</td>
+                    <td>@book.Desc</td>
+                    <td>@book.Code</td>
+                    <td>@book.Tax @currency</td>
+                    <td>@book.CostPrice @currency</td>
+                    <td>@book.SalePrice @currency</td>
+                    <td>@book.DiscountPercent @percentage</td>
+                    <td>@book.IsAvailable</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="Book" asp-route-id="@book.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Book" asp-route-id="@book.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

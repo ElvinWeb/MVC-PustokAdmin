@@ -1,0 +1,35 @@
+﻿@model List<Author>;
+@{
+    int counter = 0;
+}
+<div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>Author Datas</h1>
+        <a class="btn btn-primary" style="width:100px;" asp-action="Create" asp-controller="Author">Add</a>
+    </div>
+
+    <table class="table table-hover table-striped mt-3 shadow">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@author.FullName</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="Author" asp-route-id="@author.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Author" asp-route-id="@author.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
