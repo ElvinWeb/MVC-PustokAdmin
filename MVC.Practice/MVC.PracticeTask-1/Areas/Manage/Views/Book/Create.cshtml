@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="row col-12" style="padding:0px;">
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <label asp-for="GenreId">Genres</label>
                 <select asp-for="GenreId" class="form-select" aria-label="Default select example" style="margin-left:10px">
                     @foreach (var genre in ViewBag.Genres)
@@ -58,7 +58,7 @@
                 </select>
                 <span asp-validation-for="GenreId" style="color:red"></span>
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <label asp-for="AuthorId">Authors</label>
                 <select asp-for="AuthorId" class="form-select" aria-label="Default select example" style="margin-left:10px">
                     @foreach (var author in ViewBag.Authors)
@@ -67,6 +67,16 @@
                     }
                 </select>
                 <span asp-validation-for="AuthorId" style="color:red"></span>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <label asp-for="TagIds">Tag</label>
+                <select asp-for="TagIds" class="form-select"  aria-label="Default select example" style="margin-left:10px">
+                    @foreach (var tag in ViewBag.Tags)
+                    {
+                        <option value="@tag.Id">@tag.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="TagIds" style="color:red"></span>
             </div>
         </div>
         <div class="form-check form-switch my-3 col-md-2" style="padding-left:40px;">

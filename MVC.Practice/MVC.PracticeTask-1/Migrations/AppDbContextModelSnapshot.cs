@@ -88,6 +88,29 @@ namespace MVC.PracticeTask_1.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("MVC.PracticeTask_1.Models.BookTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("BookTags");
+                });
+
             modelBuilder.Entity("MVC.PracticeTask_1.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -169,6 +192,23 @@ namespace MVC.PracticeTask_1.Migrations
                     b.ToTable("Slides");
                 });
 
+            modelBuilder.Entity("MVC.PracticeTask_1.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("MVC.PracticeTask_1.Models.Book", b =>
                 {
                     b.HasOne("MVC.PracticeTask_1.Models.Author", "Author")
@@ -188,14 +228,43 @@ namespace MVC.PracticeTask_1.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("MVC.PracticeTask_1.Models.BookTag", b =>
+                {
+                    b.HasOne("MVC.PracticeTask_1.Models.Book", "Book")
+                        .WithMany("BookTags")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MVC.PracticeTask_1.Models.Tag", "Tag")
+                        .WithMany("BookTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Tag");
+                });
+
             modelBuilder.Entity("MVC.PracticeTask_1.Models.Author", b =>
                 {
                     b.Navigation("Books");
                 });
 
+            modelBuilder.Entity("MVC.PracticeTask_1.Models.Book", b =>
+                {
+                    b.Navigation("BookTags");
+                });
+
             modelBuilder.Entity("MVC.PracticeTask_1.Models.Genre", b =>
                 {
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("MVC.PracticeTask_1.Models.Tag", b =>
+                {
+                    b.Navigation("BookTags");
                 });
 #pragma warning restore 612, 618
         }

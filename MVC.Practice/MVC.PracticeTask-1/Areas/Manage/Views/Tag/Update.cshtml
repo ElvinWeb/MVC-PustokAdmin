@@ -1,0 +1,16 @@
+﻿@model Tag;
+<div class="container shadow " style="max-width:700px;padding:50px;margin-top:150px;">
+    <div>
+        <h1>Update a Tag</h1>
+    </div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control">
+            <span asp-validation-for="Name" style="color:red"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-25">Update</button>
+        <a class="btn btn-success w-25" asp-action="Index" asp-controller="Tag">Back To Home</a>
+    </form>
+</div>

@@ -68,6 +68,16 @@
                 </select>
                 <span asp-validation-for="AuthorId" style="color:red"></span>
             </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <label asp-for="TagIds">Tag</label>
+                <select asp-for="TagIds" class="form-select" aria-label="Default select example" style="margin-left:10px">
+                    @foreach (var tag in ViewBag.Tags)
+                    {
+                        <option value="@tag.Id">@tag.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="TagIds" style="color:red"></span>
+            </div>
         </div>
 
 

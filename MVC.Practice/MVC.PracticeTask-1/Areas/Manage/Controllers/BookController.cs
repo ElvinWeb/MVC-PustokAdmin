@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVC.PracticeTask_1.DataAccessLayer;
 using MVC.PracticeTask_1.Models;
@@ -31,6 +32,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         {
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
             return View();
         }
 
@@ -39,6 +41,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         {
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
 
             if (!ModelState.IsValid) return View();
 
@@ -54,6 +57,42 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 return View();
             }
 
+            bool check = false;
+            if (book.TagIds != null)
+            {
+                foreach (var tagId in book.TagIds)
+                {
+                    if (!_DbContext.Tags.Any(t => t.Id == tagId))
+                    {
+                        check = true;
+                        break;
+                    }
+
+                }
+            }
+
+            if (check)
+            {
+                ModelState.AddModelError("TagId", "Tag id not found!");
+                return View();
+            }
+            else
+            {
+                if (book.TagIds != null)
+                {
+                    foreach (var tagId in book.TagIds)
+                    {
+                        BookTag bookTag = new BookTag()
+                        {
+                            Book = book,
+                            TagId = tagId,
+                        };
+
+                        _DbContext.BookTags.Add(bookTag);
+                    }
+                }
+            }
+
             _DbContext.Books.Add(book);
             _DbContext.SaveChanges();
 
@@ -65,6 +104,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         {
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
 
             if (id == null) return NotFound("Error");
 
@@ -81,6 +121,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         {
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
 
             Book wantedBook = _DbContext.Books.FirstOrDefault(b => b.Id == book.Id);
 
@@ -95,12 +136,13 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             return RedirectToAction("Index");
         }
 
-
+        //Optional
         [HttpGet]
         public IActionResult Update(int id)
         {
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
 
             if (id == null) return NotFound();
 
@@ -117,6 +159,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             ViewBag.Authors = _DbContext.Authors.ToList();
             ViewBag.Genres = _DbContext.Genres.ToList();
+            ViewBag.Tags = _DbContext.Tags.ToList();
 
             if (!ModelState.IsValid) return View();
 

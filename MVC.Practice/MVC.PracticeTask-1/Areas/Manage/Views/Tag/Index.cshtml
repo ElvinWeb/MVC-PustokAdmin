@@ -1,0 +1,35 @@
+﻿@model List<Tag>;
+@{
+    int counter = 0;
+}
+<div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>Tags Datas</h1>
+        <a class="btn btn-primary" style="width:100px;" asp-action="Create" asp-controller="Tag">Add</a>
+    </div>
+
+    <table class="table table-hover table-striped mt-3 shadow">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tag in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@tag.Name</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-controller="Tag" asp-route-id="@tag.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Tag" asp-route-id="@tag.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

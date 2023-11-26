@@ -1,0 +1,17 @@
+﻿@model Tag;
+<form method="post">
+    <div class="container col-12 my-5">
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-header">
+                <h3 style="font-weight:600">
+                    Delete a Tag
+                </h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@Model.Name</li>
+            </ul>
+        </div>
+        <a class="btn btn-success" asp-action="Index" asp-controller="Tag">Back To Home</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+</form>

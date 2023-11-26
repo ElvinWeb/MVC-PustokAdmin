@@ -1,4 +1,6 @@
-﻿namespace MVC.PracticeTask_1.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MVC.PracticeTask_1.Models
 {
     public class Book
     {
@@ -15,5 +17,8 @@
         public Genre? Genre { get; set; }
         public int AuthorId { get; set; }
         public Author? Author { get; set; }
+        public List<BookTag> BookTags { get; set; } = new List<BookTag>();
+        [NotMapped]
+        public List<int> TagIds { get; set; }
     }
 }
