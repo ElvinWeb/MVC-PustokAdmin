@@ -136,7 +136,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             return RedirectToAction("Index");
         }
 
-        //Optional
+
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -146,11 +146,13 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (id == null) return NotFound();
 
-            Book book = _DbContext.Books.FirstOrDefault(b => b.Id == id);
+            Book existBook = _DbContext.Books.Include(bt => bt.BookTags).FirstOrDefault(b => b.Id == id);
 
-            if (book == null) return NotFound();
+            if (existBook == null) return NotFound();
+            existBook.TagIds = existBook.BookTags.Select(t => t.TagId).ToList();
 
-            return View(book);
+
+            return View(existBook);
         }
 
         [HttpPost]
@@ -163,7 +165,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (!ModelState.IsValid) return View();
 
-            Book existBook = _DbContext.Books.FirstOrDefault(b => b.Id == book.Id);
+            Book existBook = _DbContext.Books.Include(bt => bt.BookTags).FirstOrDefault(b => b.Id == book.Id);
 
             if (existBook == null) return NotFound("Error");
 
@@ -177,6 +179,18 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             {
                 ModelState.AddModelError("GenreId", "Genre is not found!");
                 return View();
+            }
+
+            existBook.BookTags.RemoveAll(bt => !book.TagIds.Any(tId => tId == bt.TagId));
+
+            foreach (var id in book.TagIds.Where(bt => !existBook.BookTags.Any(tId => bt == tId.TagId)))
+            {
+                BookTag bookTag = new BookTag()
+                {
+                    TagId = id,
+                };
+
+                existBook.BookTags.Add(bookTag);
             }
 
 

@@ -17,7 +17,7 @@ namespace MVC.PracticeTask_1.Models
         public Genre? Genre { get; set; }
         public int AuthorId { get; set; }
         public Author? Author { get; set; }
-        public List<BookTag> BookTags { get; set; } = new List<BookTag>();
+        public List<BookTag>? BookTags { get; set; }
         [NotMapped]
         public List<int> TagIds { get; set; }
     }
