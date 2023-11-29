@@ -312,9 +312,9 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             }
 
 
-            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == true);
             if (book.BookMainImage != null)
             {
+                existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == true);
 
                 if (book.BookMainImage.ContentType != "image/png" && book.BookMainImage.ContentType != "image/jpeg")
                 {
@@ -338,9 +338,9 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 existBook.BookImages.Add(bookImage);
             };
 
-            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == false);
             if (book.BookHoverImage != null)
             {
+                existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == false);
 
                 if (book.BookHoverImage.ContentType != "image/png" && book.BookHoverImage.ContentType != "image/jpeg")
                 {
@@ -393,9 +393,6 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                     existBook.BookImages.Add(bookImage);
                 }
             }
-
-
-
 
 
             existBook.Name = book.Name;

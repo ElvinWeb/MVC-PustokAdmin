@@ -7837,6 +7837,26 @@
       "PackagePath": "staticwebassets\\uploads\\bg-slide\\b3e45edf-204d-4f8e-8327-b36b87e5a1f4product-7.jpg"
     },
     {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\45a64280-8094-4bc5-a76e-02b9c05b649fproduct-11.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\45a64280-8094-4bc5-a76e-02b9c05b649fproduct-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\642cfaf0-6af4-420d-93bf-893840e8f1fcproduct-17.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\642cfaf0-6af4-420d-93bf-893840e8f1fcproduct-17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\847c44b6-bc92-4849-a2c4-322c3f101aa9product-16.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\847c44b6-bc92-4849-a2c4-322c3f101aa9product-16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\d4d30abc-d375-4d73-931e-95b4d24b2225product-10.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\d4d30abc-d375-4d73-931e-95b4d24b2225product-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\e58c5bac-1441-464f-9ee1-022811f9170dproduct-15.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\e58c5bac-1441-464f-9ee1-022811f9170dproduct-15.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MVC.PracticeTask-1.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
