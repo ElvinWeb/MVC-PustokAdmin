@@ -193,12 +193,12 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (id == null) return NotFound("Error");
 
-            Book book = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
+            Book existBook = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
 
-            if (book == null) return NotFound("Error");
+            if (existBook == null) return NotFound("Error");
 
 
-            return View(book);
+            return View(existBook);
         }
 
         [HttpPost]
@@ -212,9 +212,41 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (wantedBook == null) return NotFound();
 
+            if (wantedBook.BookImages != null)
+            {
+                foreach (var image in wantedBook.BookImages)
+                {
+                    string folderPath = "uploads/books";
 
-            string folderPath = "uploads/books";
-            //string path = Path.Combine(_env.WebRootPath, folderPath, wantedBook.BookImages.FindAll(x=> ));
+                    if (image.isPoster == null)
+                    {
+                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
+
+                        if (System.IO.File.Exists(path))
+                        {
+                            System.IO.File.Delete(path);
+                        }
+                    }
+                    if (image.isPoster == false)
+                    {
+                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
+
+                        if (System.IO.File.Exists(path))
+                        {
+                            System.IO.File.Delete(path);
+                        }
+                    }
+                    if (image.isPoster == true)
+                    {
+                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
+
+                        if (System.IO.File.Exists(path))
+                        {
+                            System.IO.File.Delete(path);
+                        }
+                    }
+                }
+            }
 
             _DbContext.Books.Remove(wantedBook);
             _DbContext.SaveChanges();
@@ -332,7 +364,9 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 existBook.BookImages.Add(bookImage);
             };
 
+
             existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == null);
+
             if (book.ImageFiles != null)
             {
                 foreach (var img in book.ImageFiles)
@@ -359,6 +393,9 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                     existBook.BookImages.Add(bookImage);
                 }
             }
+
+
+
 
 
             existBook.Name = book.Name;
