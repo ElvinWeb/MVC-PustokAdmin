@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVC.PracticeTask_1.DataAccessLayer;
+using MVC.PracticeTask_1.Helpers;
 using MVC.PracticeTask_1.Models;
 using MVC.PracticeTask_1.ViewModel;
+using System.Drawing;
 
 namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 {
@@ -11,10 +13,12 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
     public class BookController : Controller
     {
         private readonly AppDbContext _DbContext;
-        private readonly AppViewModel _ViewModel;
-        public BookController(AppDbContext _context)
+
+        private readonly IWebHostEnvironment _env;
+        public BookController(AppDbContext _context, IWebHostEnvironment env)
         {
             _DbContext = _context;
+            _env = env;
         }
         public IActionResult Index()
         {
@@ -58,6 +62,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             }
 
             bool check = false;
+
             if (book.TagIds != null)
             {
                 foreach (var tagId in book.TagIds)
@@ -93,6 +98,86 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 }
             }
 
+
+            if (book.BookMainImage != null)
+            {
+
+                if (book.BookMainImage.ContentType != "image/png" && book.BookMainImage.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("BookMainImage", "please select correct file type");
+                    return View();
+                }
+
+                if (book.BookMainImage.Length > 1048576)
+                {
+                    ModelState.AddModelError("BookMainImage", "file size should be more lower than 1mb ");
+                    return View();
+                }
+
+                string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", book.BookMainImage);
+                BookImage bookImage = new BookImage
+                {
+                    Book = book,
+                    ImgUrl = newFileName,
+                    isPoster = true,
+                };
+                _DbContext.BookImages.Add(bookImage);
+            };
+
+
+            if (book.BookHoverImage != null)
+            {
+
+                if (book.BookHoverImage.ContentType != "image/png" && book.BookHoverImage.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("BookHoverImage", "please select correct file type");
+                    return View();
+                }
+
+                if (book.BookHoverImage.Length > 1048576)
+                {
+                    ModelState.AddModelError("BookHoverImage", "file size should be more lower than 1mb ");
+                    return View();
+                }
+
+                string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", book.BookHoverImage);
+                BookImage bookImage = new BookImage
+                {
+                    Book = book,
+                    ImgUrl = newFileName,
+                    isPoster = false,
+                };
+                _DbContext.BookImages.Add(bookImage);
+            };
+
+            if (book.ImageFiles != null)
+            {
+                foreach (var img in book.ImageFiles)
+                {
+                    string fileName = img.FileName;
+                    if (img.ContentType != "image/png" && img.ContentType != "image/jpeg")
+                    {
+                        ModelState.AddModelError("ImageFiles", "please select correct file type");
+                        return View();
+                    }
+
+                    if (img.Length > 1048576)
+                    {
+                        ModelState.AddModelError("ImageFiles", "file size should be more lower than 1mb ");
+                        return View();
+                    }
+
+                    string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", img);
+                    BookImage bookImage = new BookImage
+                    {
+                        Book = book,
+                        ImgUrl = newFileName,
+                        isPoster = null,
+                    };
+                    _DbContext.BookImages.Add(bookImage);
+                }
+            }
+
             _DbContext.Books.Add(book);
             _DbContext.SaveChanges();
 
@@ -108,7 +193,7 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (id == null) return NotFound("Error");
 
-            Book book = _DbContext.Books.FirstOrDefault(b => b.Id == id);
+            Book book = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
 
             if (book == null) return NotFound("Error");
 
@@ -123,12 +208,13 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             ViewBag.Genres = _DbContext.Genres.ToList();
             ViewBag.Tags = _DbContext.Tags.ToList();
 
-            Book wantedBook = _DbContext.Books.FirstOrDefault(b => b.Id == book.Id);
+            Book wantedBook = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == book.Id);
 
-            if (wantedBook == null)
-            {
-                return NotFound("Error");
-            }
+            if (wantedBook == null) return NotFound();
+
+
+            string folderPath = "uploads/books";
+            //string path = Path.Combine(_env.WebRootPath, folderPath, wantedBook.BookImages.FindAll(x=> ));
 
             _DbContext.Books.Remove(wantedBook);
             _DbContext.SaveChanges();
@@ -146,13 +232,13 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (id == null) return NotFound();
 
-            Book existBook = _DbContext.Books.Include(bt => bt.BookTags).FirstOrDefault(b => b.Id == id);
+            Book Book = _DbContext.Books.Include(bt => bt.BookTags).Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
 
-            if (existBook == null) return NotFound();
-            existBook.TagIds = existBook.BookTags.Select(t => t.TagId).ToList();
+            if (Book == null) return NotFound();
+            Book.TagIds = Book.BookTags.Select(t => t.TagId).ToList();
 
 
-            return View(existBook);
+            return View(Book);
         }
 
         [HttpPost]
@@ -163,11 +249,11 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             ViewBag.Genres = _DbContext.Genres.ToList();
             ViewBag.Tags = _DbContext.Tags.ToList();
 
-            if (!ModelState.IsValid) return View();
+            //if (!ModelState.IsValid) return View();
 
-            Book existBook = _DbContext.Books.Include(bt => bt.BookTags).FirstOrDefault(b => b.Id == book.Id);
+            Book existBook = _DbContext.Books.Include(bt => bt.BookTags).Include(x => x.BookImages).FirstOrDefault(b => b.Id == book.Id);
 
-            if (existBook == null) return NotFound("Error");
+            if (existBook == null) return NotFound();
 
             if (!_DbContext.Authors.Any(a => a.Id == book.AuthorId))
             {
@@ -191,6 +277,87 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
                 };
 
                 existBook.BookTags.Add(bookTag);
+            }
+
+
+            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == true);
+            if (book.BookMainImage != null)
+            {
+
+                if (book.BookMainImage.ContentType != "image/png" && book.BookMainImage.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("BookMainImage", "please select correct file type");
+                    return View();
+                }
+
+                if (book.BookMainImage.Length > 1048576)
+                {
+                    ModelState.AddModelError("BookMainImage", "file size should be more lower than 1mb ");
+                    return View();
+                }
+
+                string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", book.BookMainImage);
+                BookImage bookImage = new BookImage
+                {
+                    Book = book,
+                    ImgUrl = newFileName,
+                    isPoster = true,
+                };
+                existBook.BookImages.Add(bookImage);
+            };
+
+            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == false);
+            if (book.BookHoverImage != null)
+            {
+
+                if (book.BookHoverImage.ContentType != "image/png" && book.BookHoverImage.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("BookHoverImage", "please select correct file type");
+                    return View();
+                }
+
+                if (book.BookHoverImage.Length > 1048576)
+                {
+                    ModelState.AddModelError("BookHoverImage", "file size should be more lower than 1mb ");
+                    return View();
+                }
+
+                string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", book.BookHoverImage);
+                BookImage bookImage = new BookImage
+                {
+                    Book = book,
+                    ImgUrl = newFileName,
+                    isPoster = false,
+                };
+                existBook.BookImages.Add(bookImage);
+            };
+
+            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == null);
+            if (book.ImageFiles != null)
+            {
+                foreach (var img in book.ImageFiles)
+                {
+                    if (img.ContentType != "image/png" && img.ContentType != "image/jpeg")
+                    {
+                        ModelState.AddModelError("ImageFiles", "please select correct file type");
+                        return View();
+                    }
+
+                    if (img.Length > 1048576)
+                    {
+                        ModelState.AddModelError("ImageFiles", "file size should be more lower than 1mb ");
+                        return View();
+                    }
+
+                    string newFileName = Helper.GetFileName(_env.WebRootPath, "uploads/books", img);
+                    BookImage bookImage = new BookImage
+                    {
+                        Book = book,
+                        ImgUrl = newFileName,
+                        isPoster = null,
+                    };
+                    existBook.BookImages.Add(bookImage);
+                }
             }
 
 

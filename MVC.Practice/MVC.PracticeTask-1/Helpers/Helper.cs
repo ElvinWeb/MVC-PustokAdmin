@@ -1,6 +1,6 @@
 ﻿namespace MVC.PracticeTask_1.Helpers
 {
-    public static class Helper
+    public class Helper
     {
         public static string GetFileName(string rootPath, string folderName, IFormFile imageFile)
         {

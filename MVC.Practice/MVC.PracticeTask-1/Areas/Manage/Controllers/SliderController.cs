@@ -147,8 +147,10 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         {
 
             Slide wantedSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
+
             string folderPath = "uploads/bg-slide";
             string path = Path.Combine(_env.WebRootPath, folderPath, wantedSlide.ImgUrl);
+
 
             if (wantedSlide.Image != null)
             {

@@ -1,9 +1,9 @@
 ﻿@model Book;
-<div class="container shadow " style="max-width:700px;padding:50px;margin-bottom:50px;">
+<div class="container shadow " style="max-width:800px;padding:50px;margin-bottom:50px;">
     <div class="mb-3">
         <h1>Create a Book</h1>
     </div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="" class="form-label">Name</label>
             <input asp-for="Name" type="text" class="form-control">
@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <label asp-for="TagIds">Tag</label>
-                <select asp-for="TagIds" class="form-select"  aria-label="Default select example" style="margin-left:10px">
+                <select asp-for="TagIds" class="form-select" aria-label="Default select example" style="margin-left:10px">
                     @foreach (var tag in ViewBag.Tags)
                     {
                         <option value="@tag.Id">@tag.Name</option>
@@ -79,7 +79,25 @@
                 <span asp-validation-for="TagIds" style="color:red"></span>
             </div>
         </div>
-        <div class="form-check form-switch my-3 col-md-2" style="padding-left:40px;">
+
+        <div class="row col-12 my-4 align-items-center flex-column" style="padding:0px;">
+            <div class="col-md-12 d-flex align-items-center justify-content-center mt-4">
+                <label asp-for="BookMainImage">MainImage</label>
+                <input class="form-control  ml-3" asp-for="BookMainImage" />
+                <span asp-validation-for="BookMainImage" style="color:red"></span>
+            </div>
+            <div class="col-md-12 d-flex align-items-center justify-content-center mt-4">
+                <label asp-for="BookHoverImage">HoverImage</label>
+                <input class="form-control  ml-3" asp-for="BookHoverImage" />
+                <span asp-validation-for="BookHoverImage" style="color:red"></span>
+            </div>
+            <div class="col-md-12 d-flex align-items-center justify-content-center mt-4">
+                <label asp-for="ImageFiles">SlideImages</label>
+                <input class="form-control ml-3" asp-for="ImageFiles" />
+                <span asp-validation-for="ImageFiles" style="color:red"></span>
+            </div>
+        </div>
+        <div class="form-check form-switch mt-5 mb-3 col-md-2" style="padding-left:40px;">
             <input class="form-check-input" type="checkbox" id="" asp-for="IsAvailable">
             <label class="form-check-label" asp-for="IsAvailable" for="">Availability</label>
             <span asp-validation-for="IsAvailable" style="color:red"></span>

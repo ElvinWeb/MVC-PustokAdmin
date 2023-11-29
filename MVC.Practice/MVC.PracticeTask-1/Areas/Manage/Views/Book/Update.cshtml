@@ -1,9 +1,9 @@
 ﻿@model Book;
-<div class="container shadow " style="max-width:700px;padding:50px;margin-bottom:50px;">
+<div class="container shadow " style="max-width:800px;padding:50px;margin-bottom:50px;">
     <div class="mb-3">
         <h1>Update a Book</h1>
     </div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="" class="form-label">Name</label>
             <input asp-for="Name" type="text" class="form-control">
@@ -14,12 +14,12 @@
             <input asp-for="Desc" type="text" class="form-control">
             <span asp-validation-for="Desc" style="color:red"></span>
         </div>
-
         <div class="mb-3">
             <label for="" class="form-label">Code</label>
             <input asp-for="Code" type="text" class="form-control">
             <span asp-validation-for="Code" style="color:red"></span>
         </div>
+
         <div class="row col-12" style="padding: 0px;">
 
             <div class="mb-3 col-md-6">
@@ -79,6 +79,41 @@
                 <span asp-validation-for="TagIds" style="color:red"></span>
             </div>
         </div>
+        <div class="row col-12 my-4 align-items-center flex-column" style="padding:0px;">
+            <div class="col-md-12 d-flex align-items-center justify-content-center mt-4">
+                <label asp-for="BookMainImage">MainImage</label>
+                <input class="form-control  mx-3" asp-for="BookMainImage" />
+                <div class="d-flex align-items-center flex-column">
+                    <img style="width:100px" src="~/uploads/books/@Model.BookImages?.Where(x => x.isPoster == true).FirstOrDefault()?.ImgUrl" class="shadow" />
+                    <input type="hidden"  asp-for="BookImageIds" style="width:50px;" />
+                </div>
+                <span asp-validation-for="BookMainImage" style="color:red"></span>
+            </div>
+            <div class="col-md-12 d-flex align-items-center justify-content-center mt-4">
+                <label asp-for="BookHoverImage">HoverImage</label>
+                <input class="form-control  mx-3" asp-for="BookHoverImage" />
+                <div class="d-flex align-items-center flex-column">
+                    <img style="width:100px" src="~/uploads/books/@Model.BookImages?.Where(x => x.isPoster == false).FirstOrDefault()?.ImgUrl" class="shadow" />
+                    <input type="hidden" asp-for="BookImageIds" style="width:50px;" />
+                </div>
+                <span asp-validation-for="BookHoverImage" style="color:red"></span>
+            </div>
+            <div class="col-md-12 d-flex align-items-start justify-content-center flex-column mt-4">
+                <label asp-for="ImageFiles">SlideImages</label>
+                <input class="form-control ml-3" asp-for="ImageFiles" />
+                <div class="d-flex align-items-center  mt-4 " style="flex-wrap:wrap;">
+                    @foreach (var item in Model.BookImages.Where(x => x.isPoster == null))
+                    {
+                        <div style="position:relative;display:flex; flex-direction:column; align-items:center">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger remove-btn" style="font-size:15px;top:10px !important;cursor:pointer">x</span>
+                            <img style="width:100px;margin-left:25px;margin-top:10px" src="~/uploads/books/@item?.ImgUrl" class="shadow" />
+                            <input value="@item.Id" type="hidden" asp-for="BookImageIds" style="width:50px;" />
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="ImageFiles" style="color:red"></span>
+            </div>
+        </div>
 
 
         <div class="form-check form-switch my-3" style="padding-left:40px;">
@@ -90,3 +125,14 @@
         <a class="btn btn-success w-25" asp-action="Index" asp-controller="Book">Back To Home</a>
     </form>
 </div>
+
+<script>
+    let removeBtns = document.querySelectorAll(".remove-btn")
+
+    removeBtns.forEach(btn =>
+        btn.addEventListener("click", () => {
+            btn.parentElement.remove();
+        })
+    )
+
+</script>

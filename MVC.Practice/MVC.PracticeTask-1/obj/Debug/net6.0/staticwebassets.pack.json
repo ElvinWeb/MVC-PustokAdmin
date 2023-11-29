@@ -7825,16 +7825,68 @@
       "PackagePath": "staticwebassets\\assets\\js\\custom.js"
     },
     {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\assets\\js\\main.js",
+      "PackagePath": "staticwebassets\\assets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\assets\\js\\plugins.js",
       "PackagePath": "staticwebassets\\assets\\js\\plugins.js"
     },
     {
-      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\28747a7d-90da-46af-90f7-087ee00576a9blog-2.jpg",
-      "PackagePath": "staticwebassets\\uploads\\bg-slide\\28747a7d-90da-46af-90f7-087ee00576a9blog-2.jpg"
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\b3e45edf-204d-4f8e-8327-b36b87e5a1f4product-7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bg-slide\\b3e45edf-204d-4f8e-8327-b36b87e5a1f4product-7.jpg"
     },
     {
-      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\ceffb82d-d9f3-432d-adfa-e2921d84fb56author-1.png",
-      "PackagePath": "staticwebassets\\uploads\\bg-slide\\ceffb82d-d9f3-432d-adfa-e2921d84fb56author-1.png"
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\bg-slide\\f919f447-812e-4ad4-8402-a18ca639a69dproduct-12.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bg-slide\\f919f447-812e-4ad4-8402-a18ca639a69dproduct-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\1ce8d056-cfbc-4d14-b38b-362adf3d4721product-11.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\1ce8d056-cfbc-4d14-b38b-362adf3d4721product-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\1d210c54-d5da-4624-b255-3fe5e30481c6product-12.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\1d210c54-d5da-4624-b255-3fe5e30481c6product-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\2e038956-273e-46ee-b793-b7e7b5a659faproduct-details-4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\2e038956-273e-46ee-b793-b7e7b5a659faproduct-details-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\34edf64b-b9c7-42a1-85cd-6ad7ae6c2aabcart-product-1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\34edf64b-b9c7-42a1-85cd-6ad7ae6c2aabcart-product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\54661c9e-7dd5-4f4d-8e92-1c481052b4d9product-10.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\54661c9e-7dd5-4f4d-8e92-1c481052b4d9product-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\5bffac19-95c7-4eee-8d0d-51933608bec6product-10.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\5bffac19-95c7-4eee-8d0d-51933608bec6product-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\66090fd3-eb75-4ba0-b78f-701f8b0159e4product-1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\66090fd3-eb75-4ba0-b78f-701f8b0159e4product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\66211793-c570-4d01-beb5-73d7fcf0d8d9product-details-5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\66211793-c570-4d01-beb5-73d7fcf0d8d9product-details-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\6a555cdd-32d3-4ae1-badc-024ab3c6f03cproduct-13.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\6a555cdd-32d3-4ae1-badc-024ab3c6f03cproduct-13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\6fe1e79e-34a4-4bef-b2d3-3747b7aae347product-4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\6fe1e79e-34a4-4bef-b2d3-3747b7aae347product-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\78893180-d68f-4f18-bee0-a3ce9fe2edf7product-3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\78893180-d68f-4f18-bee0-a3ce9fe2edf7product-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\elvin\\OneDrive\\Documents\\Sənədlər\\ForFuture-tasks\\MVC-PustokAdmin\\MVC.Practice\\MVC.PracticeTask-1\\wwwroot\\uploads\\books\\da50a017-a0a4-44ac-8cd7-f1e2ad8e9af8product-3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\da50a017-a0a4-44ac-8cd7-f1e2ad8e9af8product-3.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MVC.PracticeTask-1.Microsoft.AspNetCore.StaticWebAssets.props",

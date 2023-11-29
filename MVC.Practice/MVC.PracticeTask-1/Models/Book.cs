@@ -17,8 +17,18 @@ namespace MVC.PracticeTask_1.Models
         public Genre? Genre { get; set; }
         public int AuthorId { get; set; }
         public Author? Author { get; set; }
-        public List<BookTag>? BookTags { get; set; }
+        public List<BookTag>? BookTags { get; set; }  
         [NotMapped]
         public List<int> TagIds { get; set; }
+        [NotMapped]
+        public List<int>? BookImageIds { get; set; }
+        [NotMapped]
+        public IFormFile? BookMainImage { get; set; }
+        [NotMapped]
+        public IFormFile? BookHoverImage { get; set; }
+        [NotMapped]
+        public List<IFormFile>? ImageFiles { get; set; }
+
+        public List<BookImage>? BookImages { get; set; }
     }
 }
