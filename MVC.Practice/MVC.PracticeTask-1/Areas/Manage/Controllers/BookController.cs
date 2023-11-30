@@ -197,6 +197,44 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             Book Book = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
 
             if (Book == null) return NotFound();
+            if (Book.BookImages != null)
+            {
+
+                foreach (var item in Book.BookImages)
+                {
+                    if (item.isPoster == true)
+                    {
+                        string fullPath = Path.Combine(_env.WebRootPath, "uploads/books", item.ImgUrl);
+
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+
+                    }
+                    if (item.isPoster == false)
+                    {
+                        string fullPath = Path.Combine(_env.WebRootPath, "uploads/books", item.ImgUrl);
+
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+
+                    }
+                    if (item.isPoster == null)
+                    {
+                        string fullPath = Path.Combine(_env.WebRootPath, "uploads/books", item.ImgUrl);
+
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+
+                    }
+                }
+            }
+
 
             _DbContext.Books.Remove(Book);
             _DbContext.SaveChanges();
