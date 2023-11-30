@@ -80,24 +80,14 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             if (id == null) return NotFound();
 
             Author author = _DbContext.Authors.FirstOrDefault(a => a.Id == id);
-            return View(author);
-        }
+            if (author == null) return NotFound();
 
-        [HttpPost]
-        public IActionResult Delete(Author author)
-        {
-
-            Author existAuthor = _DbContext.Authors.FirstOrDefault(a => a.Id == author.Id);
-
-            if (existAuthor == null)
-            {
-                return NotFound();
-            }
-
-            _DbContext.Authors.Remove(existAuthor);
+            _DbContext.Authors.Remove(author);
             _DbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Ok();
         }
+
+
     }
 }

@@ -5,6 +5,7 @@
 @section cssFiles{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.min.css" />
 }
+
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between">
         <h1>Author Datas</h1>
@@ -28,7 +29,7 @@
                     <td>@author.FullName</td>
                     <td>
                         <a class="btn btn-warning" asp-action="Update" asp-controller="Author" asp-route-id="@author.Id">Update</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Author" asp-route-id="@author.Id">Delete</a>
+                        <a class="btn btn-danger delete-btn" asp-action="Delete" asp-controller="Author" asp-route-id="@author.Id">Delete</a>
                     </td>
                 </tr>
 
@@ -37,3 +38,7 @@
     </table>
 </div>
 
+@section jsFiles{
+    <script src="~/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.min.js"></script>
+}
