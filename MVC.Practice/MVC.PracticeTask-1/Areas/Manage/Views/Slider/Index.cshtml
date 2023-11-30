@@ -3,6 +3,9 @@
 @{
     int counter = 0;
 }
+@section cssFiles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.min.css" />
+}
 <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between">
         <h1>Slides Datas</h1>
@@ -34,7 +37,7 @@
                     <td style="max-width:150px;"><img style="width:40%" src="~/uploads/bg-slide/@slide.ImgUrl" /></td>
                     <td>
                         <a class="btn btn-warning" asp-action="Update" asp-controller="Slider" asp-route-id="@slide.Id">Update</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Slider" asp-route-id="@slide.Id">Delete</a>
+                        <a class="btn btn-danger delete-btn" asp-action="Delete" asp-controller="Slider" asp-route-id="@slide.Id">Delete</a>
                     </td>
                 </tr>
 
@@ -42,3 +45,8 @@
         </tbody>
     </table>
 </div>
+
+@section jsFiles{
+    <script src="~/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.min.js"></script>
+}

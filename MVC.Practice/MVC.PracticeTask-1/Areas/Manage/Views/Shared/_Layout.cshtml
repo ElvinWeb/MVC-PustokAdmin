@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+    @RenderSection("cssFiles",required: false)
+
 </head>
 
 <body id="page-top">
@@ -435,13 +437,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="j~/admin/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
+    @RenderSection("jsFiles",required: false);
+    @* <!-- Page level plugins -->
     <script src="~/admin/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="~/admin/js/demo/chart-area-demo.js"></script>
-    <script src="~/admin/js/demo/chart-pie-demo.js"></script>
+    <script src="~/admin/js/demo/chart-pie-demo.js"></script> *@
 
 </body>
 

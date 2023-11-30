@@ -6,6 +6,7 @@ using MVC.PracticeTask_1.Helpers;
 using MVC.PracticeTask_1.Models;
 using MVC.PracticeTask_1.ViewModel;
 using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 {
@@ -191,70 +192,19 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             ViewBag.Genres = _DbContext.Genres.ToList();
             ViewBag.Tags = _DbContext.Tags.ToList();
 
-            if (id == null) return NotFound("Error");
+            if (id == null) return NotFound();
 
-            Book existBook = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
+            Book Book = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == id);
 
-            if (existBook == null) return NotFound("Error");
+            if (Book == null) return NotFound();
 
-
-            return View(existBook);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Book book)
-        {
-            ViewBag.Authors = _DbContext.Authors.ToList();
-            ViewBag.Genres = _DbContext.Genres.ToList();
-            ViewBag.Tags = _DbContext.Tags.ToList();
-
-            Book wantedBook = _DbContext.Books.Include(x => x.BookImages).FirstOrDefault(b => b.Id == book.Id);
-
-            if (wantedBook == null) return NotFound();
-
-            if (wantedBook.BookImages != null)
-            {
-                foreach (var image in wantedBook.BookImages)
-                {
-                    string folderPath = "uploads/books";
-
-                    if (image.isPoster == null)
-                    {
-                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
-
-                        if (System.IO.File.Exists(path))
-                        {
-                            System.IO.File.Delete(path);
-                        }
-                    }
-                    if (image.isPoster == false)
-                    {
-                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
-
-                        if (System.IO.File.Exists(path))
-                        {
-                            System.IO.File.Delete(path);
-                        }
-                    }
-                    if (image.isPoster == true)
-                    {
-                        string path = Path.Combine(_env.WebRootPath, folderPath, image.ImgUrl);
-
-                        if (System.IO.File.Exists(path))
-                        {
-                            System.IO.File.Delete(path);
-                        }
-                    }
-                }
-            }
-
-            _DbContext.Books.Remove(wantedBook);
+            _DbContext.Books.Remove(Book);
             _DbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Ok();
         }
 
-
+  
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -314,7 +264,16 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (book.BookMainImage != null)
             {
+                string folderPath = "uploads/books";
+                string path = Path.Combine(_env.WebRootPath, folderPath, existBook.BookImages.FirstOrDefault(x => x.isPoster == true).ImgUrl);
+
                 existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == true);
+
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
 
                 if (book.BookMainImage.ContentType != "image/png" && book.BookMainImage.ContentType != "image/jpeg")
                 {
@@ -340,7 +299,15 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
 
             if (book.BookHoverImage != null)
             {
+                string folderPath = "uploads/books";
+                string path = Path.Combine(_env.WebRootPath, folderPath, existBook.BookImages.Where(x => x.isPoster == false).FirstOrDefault().ImgUrl);
                 existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == false);
+
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
 
                 if (book.BookHoverImage.ContentType != "image/png" && book.BookHoverImage.ContentType != "image/jpeg")
                 {
@@ -365,13 +332,25 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             };
 
 
+
+            foreach (var item in existBook.BookImages.Where(x => !book.BookImageIds.Contains(x.Id) && x.isPoster == null))
+            {
+                string fullPath = Path.Combine(_env.WebRootPath, "uploads/books", item.ImgUrl);
+
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+            }
+
             existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == null);
 
             if (book.ImageFiles != null)
             {
                 foreach (var img in book.ImageFiles)
                 {
-                    if (img.ContentType != "image/png" && img.ContentType != "image/jpeg")
+
+                    if (img.ContentType != "images/png" && img.ContentType != "image/jpeg")
                     {
                         ModelState.AddModelError("ImageFiles", "please select correct file type");
                         return View();

@@ -138,33 +138,18 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            Slide slide = _DbContext.Slides.FirstOrDefault(x => x.Id == id);
-            return View(slide);
-        }
+            if (id == null) return NotFound();
 
-        [HttpPost]
-        public IActionResult Delete(Slide slide)
-        {
+            Slide slide = _DbContext.Slides.FirstOrDefault(s => s.Id == id);
 
-            Slide wantedSlide = _DbContext.Slides.FirstOrDefault(x => x.Id == slide.Id);
+            if (slide == null) return NotFound();
 
-            string folderPath = "uploads/bg-slide";
-
-
-            if (wantedSlide.ImgUrl != null)
-            {
-                string path = Path.Combine(_env.WebRootPath, folderPath, wantedSlide.ImgUrl);
-
-                if (System.IO.File.Exists(path))
-                {
-                    System.IO.File.Delete(path);
-                }
-            }
-
-            _DbContext.Slides.Remove(wantedSlide);
+            _DbContext.Slides.Remove(slide);
             _DbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Ok();
         }
+
+
     }
 }

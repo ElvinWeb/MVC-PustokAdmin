@@ -79,24 +79,14 @@ namespace MVC.PracticeTask_1.Areas.Manage.Controllers
             if (id == null) return NotFound();
 
             Genre genre = _DbContext.Genres.FirstOrDefault(g => g.Id == id);
-            return View(genre);
-        }
 
-        [HttpPost]
-        public IActionResult Delete(Genre genre)
-        {
-
-            Genre existGenre = _DbContext.Genres.FirstOrDefault(g => g.Id == genre.Id);
-
-            if (existGenre == null)
-            {
-                return NotFound();
-            }
-
-            _DbContext.Genres.Remove(existGenre);
+            if (genre == null) return NotFound();
+            _DbContext.Genres.Remove(genre);
             _DbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Ok();
         }
+
+
     }
 }

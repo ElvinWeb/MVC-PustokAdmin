@@ -13,11 +13,14 @@ namespace MVC.PracticeTask_1.Models
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public double DiscountPercent { get; set; }
+        public bool isNew { get; set; }
+        public bool isFeatured { get; set; }
+        public bool isBestseller { get; set; }
         public int GenreId { get; set; }
         public Genre? Genre { get; set; }
         public int AuthorId { get; set; }
         public Author? Author { get; set; }
-        public List<BookTag>? BookTags { get; set; }  
+        public List<BookTag>? BookTags { get; set; }
         [NotMapped]
         public List<int> TagIds { get; set; }
         [NotMapped]
